@@ -8,7 +8,6 @@ import ec.edu.ups.ppw.negocio.GestionComputadores;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Response;
@@ -23,12 +22,12 @@ public class GComputadoresService {
     private ComputadorDAO daoComputador;
 
 	@GET
-	@Path("personas1")
+	@Path("compu")
 	@Produces("application/json")
 	@Consumes("application/json")
 	public Response guardarComputador(Computador computador) {
 	    try {
-	    	gComputadores.guardarComputadores(computador);
+	    	gComputadores.guardarComputador(computador);
 	        List<Computador> computadores = getComputadores(); 
 	        return Response.status(Response.Status.OK).entity(computadores).build();
 	    } catch (Exception e) {
@@ -39,9 +38,10 @@ public class GComputadoresService {
 	        return Response.status(Response.Status.OK).entity(error).build();
 	    }
 	}
-
-	public List<Computador> getComputadores() {
-	    return daoComputador.getAll();
+	
+	
+	public List<Computador> getComputadores(){
+		return daoComputador.getAll();
 	}
 	
 }

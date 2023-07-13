@@ -9,7 +9,6 @@ import jakarta.persistence.Id;
 public class Computador {
 
 	@Id
-	@GeneratedValue
 	int id_computador;
 	String id_unico;
 	String marca;
@@ -17,6 +16,17 @@ public class Computador {
 	String precio;
 	String almacenamiento;
 	
+	public Computador(int id_computador, String id_unico, String marca, String modelo, String precio,
+			String almacenamiento) {
+		super();
+		this.id_computador = id_computador;
+		this.id_unico = id_unico;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.precio = precio;
+		this.almacenamiento = almacenamiento;
+	}
+
 	public Computador() {
 	    }
 

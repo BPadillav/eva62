@@ -11,31 +11,28 @@ public class GestionComputadores {
 	@Inject
 	private ComputadorDAO daoComputador;
 	
-	 public void guardarComputadores(Computador computador) throws Exception {
-		 
-		 if (!this.isIdValido(computador.getId_unico())) 
-		        throw new Exception("ID incorrecto");
-			
-		        if (daoComputador.read(computador.getId_unico()) == null){
-			        try {
-			            daoComputador.insert(computador); 
-			        } catch (Exception e) {
-			            throw new Exception("Error al insertar: " + e.getMessage());
-			        }
-			    } else {
-			        try {
-			            daoComputador.update(computador); 
-			        } catch (Exception e) {
-			            throw new Exception("Error al actualizar: " + e.getMessage());
-			        }
-			    }
-		}
-    
-	    private boolean isIdValido (String id_unico) {
-		
-	    	return id_unico.length()==5;
-
+	public void guardarComputador(Computador computador) throws Exception {
+	    if (computador == null) {
+	        throw new IllegalArgumentException("incorrecto");
 	    }
+
+	    if (!isCodigoValido(computador.getId_computador())) {
+	        throw new Exception("Id incorrecto");
+	    }
+
+	    try {
+	        if (daoComputador.read(computador.getId_computador()) == null) {
+	        	daoComputador.insert(computador);
+	        } else {
+	        	daoComputador.update(computador);
+	        }
+	    } catch (Exception e) {
+	        throw new Exception("Error al guardar: " + e.getMessage());
+	    }
+	}
+
+	private boolean isCodigoValido(int id_computador) {
+	    return id_computador > 0;
+	}
 	
-    public void guardarComputadores( String marca, String modelo, String precio, String almacenamiento) {}
 }

@@ -30,8 +30,8 @@ public class ComputadorDAO implements Serializable {
 		em.merge(computador);
 	}
 	
-	public Computador read(String id_unico) {
-		Computador p = em.find(Computador.class, id_unico);
+	public Computador read(int id_computador) {
+		Computador p = em.find(Computador.class, id_computador);
 		return p;
 		
 	}

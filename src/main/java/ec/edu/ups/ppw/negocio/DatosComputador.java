@@ -24,13 +24,15 @@ public class DatosComputador {
 		Computador c = new Computador();
 		Computador c1 = new Computador();
 		
-		c.setId_unico("50000");
+		c.setId_computador(4);
+		c.setId_unico("54440000");
 		c.setMarca("HP");
 		c.setAlmacenamiento("512 GB");
 		c.setModelo("Portatil");
 		c.setPrecio("500");
 		
-		c.setId_unico("90000");
+		c1.setId_computador(5);
+		c1.setId_unico("9047400");
 		c1.setMarca("ASUS");
 		c1.setAlmacenamiento("216 GB");
 		c1.setModelo("Personal");
@@ -41,6 +43,16 @@ public class DatosComputador {
 		
 		List<Computador> computadores = daoComputador.getAll();
 		
+		for (Computador computador : computadores) {
+			
+		    System.out.println("ID: " + computador.getId_computador());
+		    System.out.println("Unico: " + computador.getId_unico());
+		    System.out.println("Marca: " + computador.getMarca());
+		    System.out.println("Almacenamiento: " + computador.getAlmacenamiento());
+		    System.out.println("Modelo: " + computador.getModelo());
+		    System.out.println("Precio: " + computador.getPrecio());
+		    System.out.println("-------------------------------------");
+		}
 
     }
 }
